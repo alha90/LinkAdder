@@ -3,6 +3,7 @@ const inputs = document.querySelectorAll("#submit input");
 const ul = document.querySelector(".create_link");
 const clear = document.querySelector(".clear button");
 // let index;
+console.log('Endale')
 let counter = localStorage.length;
 
 form.addEventListener("submit", (e) => {
