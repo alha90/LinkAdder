@@ -3,7 +3,7 @@ const inputs = document.querySelectorAll("#submit input");
 const ul = document.querySelector(".create_link");
 const clear = document.querySelector(".clear button");
 // let index;
-console.log('Endale')
+// console.log('Endale')
 let counter = localStorage.length;
 
 form.addEventListener("submit", (e) => {
@@ -19,6 +19,7 @@ form.addEventListener("submit", (e) => {
 function storagePersistence(counter) {
   const link = document.createElement("li");
   const anchor = document.createElement("a");
+
   if (localStorage.length != 0) {
     let descriptionVar = JSON.parse(
       localStorage.getItem(`data${counter}`)
@@ -26,6 +27,7 @@ function storagePersistence(counter) {
     let linkVar = JSON.parse(localStorage.getItem(`data${counter}`)).Link;
     anchor.href = linkVar;
     anchor.target = "blank";
+    anchor.setAttribute("id", `${counter}`);
     anchor.appendChild(document.createTextNode(descriptionVar));
     link.appendChild(anchor);
     document.querySelector(".create_link").appendChild(link);
@@ -45,3 +47,10 @@ clear.addEventListener("click", () => {
   localStorage.clear();
   location.reload();
 });
+
+////////// Function to clear or edit individual links /////////
+function clearEditLink() {
+  for (let index = 0; index < localStorage.length; index++) {}
+}
+const clearlink = document.querySelectorAll(selectors);
+function addClearButton() {}
