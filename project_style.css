@@ -16,23 +16,23 @@ body {
   /* border: 1px solid green; */
 }
 form {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
   /* border: 1px solid red; */
 }
 form input {
+  font-family: inherit;
   font-size: 0.8em;
   padding: 5px;
   margin: 5px;
 }
 form button {
+  font-family: inherit;
   font-size: 0.8em;
   padding: 5px;
   margin: 5px;
 }
-form button:hover {
+.form_button button:hover {
   background-color: aquamarine;
 }
 
@@ -55,26 +55,59 @@ li {
   margin-top: 20px;
   border: 1px solid red;
   border-radius: 20px;
-  width: 200px;
+  width: 350px;
+  display: flex;
+  /* justify-content: space-around; */
   /* background-color: green; */
 }
 ul a {
   /* font-size: 0.8em; */
+  width: 100%;
   box-sizing: border-box;
   display: block;
   padding: 4px;
   text-decoration: none;
+  font-family: inherit;
+  /* border: 1px solid red; */
 }
 ul a:hover {
   color: blueviolet;
 }
 
-.clear {
+/* .clear {
   float: left;
   position: absolute;
   bottom: 20px;
+} */
+/* .clear button {
+  font-size: 0.8em;
+  padding: 5px;
+  margin: 5px;
+} */
+
+button.clear {
+  margin-left: auto;
+  /* border-top-right-radius: 3px; */
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  font-size: 0.8em;
+  background-color: rgb(239, 102, 129);
+  opacity: 0;
+  border: none;
+  font-family: inherit;
 }
-.clear button {
+button.visible {
+  opacity: 100%;
+  cursor: pointer;
+}
+button.visible:hover {
+  background-color: rgb(235, 10, 55);
+}
+.form_button {
+  display: flex;
+}
+button#clear {
+  font-family: inherit;
   font-size: 0.8em;
   padding: 5px;
   margin: 5px;
