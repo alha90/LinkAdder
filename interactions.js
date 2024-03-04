@@ -4,15 +4,23 @@ const ul = document.querySelector("li");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  // let counter = localStorage.length;
+  let storageArray = [];
   let obj = {};
-  // console.log(counter);
   Array.from(inputs).forEach((e) => {
     obj[e.id] = e.value;
   });
-  localStorage.setItem(obj.description, obj.Link);
+
+  if (localStorage.length != 0){
+    JSON.parse(localStorage.getItem('data')).forEach(e => {
+      storageArray.push(e);
+    })
+    storageArray.push(obj)
+    localStorage.setItem('data', JSON.stringify(storageArray))
+  } else {
+    storageArray.push(obj)
+    localStorage.setItem('data', JSON.stringify(storageArray));
+  }
   storagePersistence(obj.description, obj.Link);
-  // counter += 1;
   form.reset();
 });
 
@@ -34,9 +42,6 @@ function storagePersistence(description, Link) {
 }
 
 window.addEventListener("load", (event) => {
-  // for (let index = 0; index < localStorage.length; index++) {
-  //   storagePersistence(index);
-  // }
   loadElement();
 });
 
@@ -52,11 +57,16 @@ function clearElement() {
   const linkClear = document.querySelectorAll("li button");
 
   linkClear.forEach((e) => {
+    let newArray = []
     e.classList.toggle("visible");
     e.addEventListener("click", (event) => {
-      event.preventDefault();
-      console.log(event.target.id);
-      localStorage.removeItem(event.target.id);
+      event.preventDefault();;
+      assortedData().forEach( e => {
+        if (e.description != event.target.id) {
+          newArray.push(e)
+        }
+      })
+      localStorage.setItem('data', JSON.stringify(newArray));
       location.reload();
     });
   });
@@ -70,10 +80,10 @@ function loadElement(bool) {
     const anchor = document.createElement("a");
     const clearlink = document.createElement("button");
 
-    anchor.href = localStorage.getItem(e);
+    anchor.href = localStorage.getItem(e.Link);
     anchor.target = "blank";
-    clearlink.setAttribute("id", e);
-    anchor.appendChild(document.createTextNode(e));
+    clearlink.setAttribute("id", e.description);
+    anchor.appendChild(document.createTextNode(e.description));
     clearlink.appendChild(document.createTextNode("remove"));
     clearlink.classList.add("clear");
     link.append(anchor, clearlink);
@@ -84,9 +94,9 @@ function loadElement(bool) {
 function assortedData() {
   let arr = [];
   if (localStorage.length != 0) {
-    for (var i = 0; i < localStorage.length; i++) {
-      arr.push(localStorage.key(i));
-    }
+    JSON.parse(localStorage.getItem('data')).forEach( e => {
+      arr.push(e)
+    })
   }
   return arr;
 }

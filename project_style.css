@@ -27,6 +27,7 @@ form input {
   margin: 5px;
 }
 form button {
+  cursor: pointer;
   font-family: inherit;
   font-size: 0.8em;
   padding: 5px;
@@ -111,4 +112,5 @@ button#clear {
   font-size: 0.8em;
   padding: 5px;
   margin: 5px;
+  cursor: pointer;
 }
