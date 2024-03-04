@@ -80,7 +80,7 @@ function loadElement(bool) {
     const anchor = document.createElement("a");
     const clearlink = document.createElement("button");
 
-    anchor.href = localStorage.getItem(e.Link);
+    anchor.href = e.Link;
     anchor.target = "blank";
     clearlink.setAttribute("id", e.description);
     anchor.appendChild(document.createTextNode(e.description));
