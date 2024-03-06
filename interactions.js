@@ -100,3 +100,5 @@ function assortedData() {
   }
   return arr;
 }
+
+///////////////////// Below Will be a To-DO list //////////////////////////////////////////
