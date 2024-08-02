@@ -28,13 +28,17 @@ function storagePersistence(description, Link) {
   const link = document.createElement("li");
   const anchor = document.createElement("a");
   const clearlink = document.createElement("button");
+  const img = document.createElement("img");
+  img.src = "icons8-trash.svg"
 
   if (localStorage.length != 0) {
     anchor.href = Link;
     anchor.target = "blank";
     clearlink.setAttribute("id", description);
+    img.setAttribute('id', description)
     anchor.appendChild(document.createTextNode(description));
-    clearlink.appendChild(document.createTextNode("remove"));
+    clearlink.appendChild(img)
+    // clearlink.appendChild(document.createTextNode("remove"));
     clearlink.classList.add("clear");
     link.append(anchor, clearlink);
     document.querySelector(".create_link").appendChild(link);
@@ -58,10 +62,14 @@ function clearElement() {
 
   linkClear.forEach((e) => {
     let newArray = []
+    console.log(e)
     e.classList.toggle("visible");
     e.addEventListener("click", (event) => {
-      event.preventDefault();;
+      event.preventDefault();
+      console.log(event.target.id)
       assortedData().forEach( e => {
+        // e.preventDefault()
+        
         if (e.description != event.target.id) {
           newArray.push(e)
         }
@@ -74,17 +82,20 @@ function clearElement() {
 ///////////////////////// End of clear or edit Fucntion ///////////////
 
 ///////// Load elements from localStorage ////////
-function loadElement(bool) {
+function loadElement() {
   assortedData().forEach((e) => {
     const link = document.createElement("li");
     const anchor = document.createElement("a");
     const clearlink = document.createElement("button");
-
+    const img = document.createElement("img");
+    img.src = "icons8-trash.svg"
     anchor.href = e.Link;
     anchor.target = "blank";
     clearlink.setAttribute("id", e.description);
+    img.setAttribute('id', e.description)
     anchor.appendChild(document.createTextNode(e.description));
-    clearlink.appendChild(document.createTextNode("remove"));
+    clearlink.appendChild(img)
+    // clearlink.appendChild(document.createTextNode("remove"));
     clearlink.classList.add("clear");
     link.append(anchor, clearlink);
     document.querySelector(".create_link").appendChild(link);
