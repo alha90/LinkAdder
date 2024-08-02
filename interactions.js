@@ -10,15 +10,18 @@ form.addEventListener("submit", (e) => {
     obj[e.id] = e.value;
   });
 
-  if (localStorage.length != 0){
-    JSON.parse(localStorage.getItem('data')).forEach(e => {
+  if (
+    localStorage.length != 0 &&
+    Array.isArray(JSON.parse(localStorage.getItem("data")))
+  ) {
+    JSON.parse(localStorage.getItem("data")).forEach((e) => {
       storageArray.push(e);
-    })
-    storageArray.push(obj)
-    localStorage.setItem('data', JSON.stringify(storageArray))
+    });
+    storageArray.push(obj);
+    localStorage.setItem("data", JSON.stringify(storageArray));
   } else {
-    storageArray.push(obj)
-    localStorage.setItem('data', JSON.stringify(storageArray));
+    storageArray.push(obj);
+    localStorage.setItem("data", JSON.stringify(storageArray));
   }
   storagePersistence(obj.description, obj.Link);
   form.reset();
@@ -61,6 +64,7 @@ function clearElement() {
   const linkClear = document.querySelectorAll("li button");
 
   linkClear.forEach((e) => {
+<<<<<<< HEAD
     let newArray = []
     console.log(e)
     e.classList.toggle("visible");
@@ -70,11 +74,18 @@ function clearElement() {
       assortedData().forEach( e => {
         // e.preventDefault()
         
+=======
+    let newArray = [];
+    e.classList.toggle("visible");
+    e.addEventListener("click", (event) => {
+      event.preventDefault();
+      assortedData().forEach((e) => {
+>>>>>>> 1ee82fb787c8fa79935d5272c61264b5eea66e19
         if (e.description != event.target.id) {
-          newArray.push(e)
+          newArray.push(e);
         }
-      })
-      localStorage.setItem('data', JSON.stringify(newArray));
+      });
+      localStorage.setItem("data", JSON.stringify(newArray));
       location.reload();
     });
   });
@@ -104,10 +115,13 @@ function loadElement() {
 
 function assortedData() {
   let arr = [];
-  if (localStorage.length != 0) {
-    JSON.parse(localStorage.getItem('data')).forEach( e => {
-      arr.push(e)
-    })
+  if (
+    localStorage.length != 0 &&
+    Array.isArray(JSON.parse(localStorage.getItem("data")))
+  ) {
+    JSON.parse(localStorage.getItem("data")).forEach((e) => {
+      arr.push(e);
+    });
   }
   return arr;
 }
