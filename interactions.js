@@ -64,23 +64,22 @@ function clearElement() {
   const linkClear = document.querySelectorAll("li button");
 
   linkClear.forEach((e) => {
-<<<<<<< HEAD
+
     let newArray = []
     console.log(e)
     e.classList.toggle("visible");
     e.addEventListener("click", (event) => {
       event.preventDefault();
       console.log(event.target.id)
-      assortedData().forEach( e => {
+      assortedData().forEach(e => {
         // e.preventDefault()
-        
-=======
-    let newArray = [];
-    e.classList.toggle("visible");
-    e.addEventListener("click", (event) => {
-      event.preventDefault();
-      assortedData().forEach((e) => {
->>>>>>> 1ee82fb787c8fa79935d5272c61264b5eea66e19
+
+        // let newArray = [];
+        // e.classList.toggle("visible");
+        // e.addEventListener("click", (event) => {
+        //   event.preventDefault();
+        //   assortedData().forEach((e) => {
+
         if (e.description != event.target.id) {
           newArray.push(e);
         }
@@ -89,8 +88,10 @@ function clearElement() {
       location.reload();
     });
   });
+  //   })
+  // })
 }
-///////////////////////// End of clear or edit Fucntion ///////////////
+///////////////////////// End of clear or edit Function ///////////////
 
 ///////// Load elements from localStorage ////////
 function loadElement() {
