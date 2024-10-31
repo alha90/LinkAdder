@@ -72,14 +72,6 @@ function clearElement() {
       event.preventDefault();
       console.log(event.target.id)
       assortedData().forEach(e => {
-        // e.preventDefault()
-
-        // let newArray = [];
-        // e.classList.toggle("visible");
-        // e.addEventListener("click", (event) => {
-        //   event.preventDefault();
-        //   assortedData().forEach((e) => {
-
         if (e.description != event.target.id) {
           newArray.push(e);
         }
